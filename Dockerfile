@@ -1,6 +1,6 @@
 # Build the manager binary
 FROM docker.io/golang:1.23 AS builder
-LABEL org.opencontainers.image.source=https://github.com/tomerle03/ghost-operator
+LABEL org.opencontainers.image.source="https://github.com/tomerle03/ghost-operator"
 ARG TARGETOS
 ARG TARGETARCH
 
