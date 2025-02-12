@@ -1,0 +1,21 @@
+name: Docker Image CI for GHCR
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  buid_and_publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          docker login --username tomerle03 --password ${{ secrets.GHCR_TOKEN }} ghcr.io
+          export IMG=ghcr.io/tomerle03/ghost-operator:latest
+          make docker-build
+          docker push $IMG
