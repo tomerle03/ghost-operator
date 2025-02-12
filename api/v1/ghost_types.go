@@ -25,17 +25,14 @@ import (
 
 // GhostSpec defines the desired state of Ghost.
 type GhostSpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-
-	// Foo is an example field of Ghost. Edit ghost_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	//+kubebuilder:validation:Pattern=`^[-a-z0-9]*$`
+	//The image tag of the Ghost container to deploy
+	ImageTag string `json:"imageTag"`
 }
 
 // GhostStatus defines the observed state of Ghost.
 type GhostStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
+	Conditions []metav1.Condition `json:"conditions,omitempty"`
 }
 
 // +kubebuilder:object:root=true
